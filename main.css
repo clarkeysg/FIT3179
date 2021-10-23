@@ -24,3 +24,7 @@ article {
   display: table;
   clear: both;
 }
+
+header{
+  font-family: Helvetica;
+}
