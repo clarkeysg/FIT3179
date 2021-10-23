@@ -1,0 +1,20 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Bottom 10 Scores: GDP Per Captia",
+    "width": 250, 
+    "height": 200,
+    "data": {
+        "url": "2019.csv"
+        
+    
+    }, 
+    "transform": [{"calculate":"datum.Overall_rank","as": "r1"},
+        {"filter" : "datum.r1 >= 147"}
+    ],
+         "mark": "bar",
+         "encoding": {
+                        "x": { "field": "Country", "type": "nominal" , "sort": {"op":"sum", "field":"GDP_per_capita", "order" :"descending"}}, 
+                        "y": { "field": "GDP_per_capita", "type": "quantitative" },
+                        "color": { "field" : "GDP_per_capita", "type": "quantitative", "scale": {"range": ["Purple", "#CBC3E3"]}}
+                    }
+}

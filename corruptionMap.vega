@@ -1,0 +1,35 @@
+{ 
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json", 
+    "title": "Perceived Corruption", 
+    "width": 1000, 
+    "height": 1000, 
+    "projection": {"type": "equalEarth"}, 
+    "data": { 
+        "url": "world1.topojson", 
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"} }, 
+    "transform": [ 
+        { "lookup": "properties.NAME", 
+            "from": { 
+                "data": { 
+                    "url": "2019.csv" },
+                    "key": "Country", 
+                    "fields": ["Perceptions_of_corruption"] } }, 
+                    {"calculate": "datum.Perceptions_of_corruption", "as": "Corruption"} ], 
+    "mark": {"type": "geoshape"}, 
+    "encoding": { 
+        "color": { 
+            "field": "Corruption", 
+            "type": "quantitative", 
+            "scale":  {"range": ["#CDCDCD", "Purple"]}
+        }, 
+        "tooltip": [ 
+            {
+                "field": "properties.NAME", 
+                "type": "nominal", 
+                "title": "Country"}, 
+            {
+                "field": "Perceptions_of_corruption", 
+                "type": "quantitative"} 
+            ] 
+    } 
+}

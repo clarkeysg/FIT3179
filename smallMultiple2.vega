@@ -1,0 +1,20 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Bottom 10 Scores: Freedom to make life choices",
+    "width": 250, 
+    "height": 200,
+    "data": {
+        "url": "2019.csv"
+        
+    
+    }, 
+    "transform": [{"calculate":"datum.Overall_rank","as": "r1"},
+        {"filter" : "datum.r1 >= 147"}
+    ],
+         "mark": "bar",
+         "encoding": {
+                        "x": { "field": "Country", "type": "nominal" , "sort": {"op":"sum", "field":"Freedom_to_make_life_choices", "order" :"descending"}}, 
+                        "y": { "field": "Freedom_to_make_life_choices", "type": "quantitative" },
+                        "color": { "field" : "Freedom_to_make_life_choices", "type": "quantitative", "scale": {"range": ["Purple", "#CBC3E3"]}}
+                    }
+}

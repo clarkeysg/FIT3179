@@ -1,0 +1,20 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Bottom 10 Scores: Perception of Corruption",
+    "width": 250, 
+    "height": 200,
+    "data": {
+        "url": "2019.csv"
+        
+    
+    }, 
+    "transform": [{"calculate":"datum.Overall_rank","as": "r1"},
+        {"filter" : "datum.r1 >= 147"}
+    ],
+         "mark": "bar",
+         "encoding": {
+                        "x": { "field": "Country", "type": "nominal" , "sort": {"op":"sum", "field":"Perceptions_of_corruption", "order" :"ascending"}}, 
+                        "y": { "field": "Perceptions_of_corruption", "type": "quantitative" },
+                        "color": { "field" : "Perceptions_of_corruption", "type": "quantitative", "scale": {"range": ["#CBC3E3", "Purple"]}}
+                    }
+}

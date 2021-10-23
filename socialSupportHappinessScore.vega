@@ -1,0 +1,16 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Happiness Score and Social Support",
+    "width": 295, 
+    "height": 200,
+    "data": {
+        "url": "2019.csv"
+    
+    }, 
+         "mark": "point",
+         "encoding": {
+                        "y": { "field": "Social_support", "type": "quantitative" , "sort": {"op":"sum", "field":"Overall Rank"}}, 
+                        "x": { "field": "Score", "type": "quantitative" },
+                        "color": { "field" : "Overall_rank", "type": "quantitative", "scale": {"range": ["green", "#90ee90 "]}}
+                    }
+}
